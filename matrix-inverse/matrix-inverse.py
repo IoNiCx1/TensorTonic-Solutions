@@ -6,7 +6,7 @@ def matrix_inverse(A: list) -> np.ndarray | None:
     aug = np.concatenate((A,np.eye(n)),axis = 1)
     for i in range(n):
         p = i + np.argmax(np.abs((aug[i:,i])))
-        if abs(aug[i,p]) < 1e-12:
+        if abs(aug[p,i]) < 1e-12:
             return None
         aug[[i,p]] = aug[[p,i]]
         aug[i] /= aug[i,i]
